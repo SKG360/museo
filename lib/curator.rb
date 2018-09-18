@@ -70,4 +70,16 @@ class Curator
     end
   end
 
+  def photographs_taken_by_artists_from(country)
+    gogo = @artists.find_all do |artist|
+      artist.country == country
+      require "pry"; binding.pry
+    end
+    @photographs.find_all do |photo|
+      gogo.map do |artist|
+        photo.artist_id == artist.id
+       end
+    end
+  end
+
 end
